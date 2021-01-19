@@ -1,0 +1,76 @@
+{% block footer %}
+    <footer class="text-white main-footer-wrapper">
+        <div data-aos="zoom-in" data-aos-duration="800" data-aos-once="true">
+            <div class="container p-4 text-center mb-3">
+                <div class="row">
+        
+                    <div class="col-lg-6 col-md-6 mb-6 mb-md-36">
+                        <div class="newsletter">
+                            <h3 class="text-uppercase">Ne maradjon le újdonságainkról!</h3>
+                            <h5><i>Iratkozzon fel hírlevelünkre!</i></h5>
+                            <hr class="title-hr mb-4">
+
+                            <form method="POST" action="newsletter_inc">
+                                <div class="input-group">
+                                    <input type="email" name="email" class="input" placeholder="Írja be íméljét!" required>
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-envelope icon"></i>
+                                    </div>
+                                    <button type="submit" class="main-btn"><span>Feliratkozás</span></button>
+                                </div>
+                            </form>
+
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>       
+                            <a href="#"><i class="fab fa-twitter"></i></a>  
+                            <a href="#"><i class="fab fa-instagram"></i></a>           
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-3 mb-3 mb-md-0">
+                        <h5 class="text-uppercase">Cégünkről</h5>
+        
+                        <ul class="list-unstyled mb-0 pt-3">
+                            <li>
+                                <a href="#">Rólunk</a>
+                            </li>
+                            <li>
+                                <a href="#">ÁSZF</a>
+                            </li>
+                            <li>
+                                <a href="#">Elérhetőségek</a>
+                            </li>
+                            <li>
+                                <a href="#">Munkatársak</a>
+                            </li>
+                        </ul>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-3 mb-3 mb-md-0">
+                        <h5 class="text-uppercase">Hasznos</h5>
+        
+                        <ul class="list-unstyled mb-0 pt-3">
+                            <li>
+                                <a href="#">Gyakori kérdések</a>
+                            </li>
+                            <li>
+                                <a href="#">Futárszolgálat</a>
+                            </li>
+                            <li>
+                                <a href="#">Távsegítség</a>
+                            </li>
+                            <li>
+                                <a href="#">Windows optimalizálása</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-1 text-center copyright">
+            <p class="pt-3">ComputerDesk 2020 © Minden jog fenntartva. Az Oldalt készítette: Várnai Dávid.</p>
+        </div>
+
+    </footer>
+{% endblock %}

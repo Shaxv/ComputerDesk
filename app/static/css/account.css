@@ -1,0 +1,273 @@
+.login{
+    background-image: url("../pics/corporate.jpg");
+    background-size: cover;
+    height: 950px;
+    width: 100%;
+}
+.login-bg{
+    height: 950px;
+    padding: 140px 0;
+    background-image: linear-gradient(90deg, rgba(116, 139, 148, 0.85) 0%, rgba(40, 101, 231, 0.85) 100%);
+}
+.bg1{
+    height: 950px;
+    padding: 140px 0;
+    background-image: linear-gradient(180deg, rgba(116, 139, 148, 0.85) 0%, rgba(40, 101, 231, 0.85) 100%);
+}
+.login-wrapper{
+    width: 400px;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.login form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.form-wrapper{
+    margin: 0 auto;
+    width: 300px;
+}
+.login .title, .modal .title{
+    display: block; 
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 40px;
+    font-size: 25px;
+    margin-top: 20px;
+}
+.input-container{
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 25px;
+}
+.input{
+    border: none;
+    font-size: 16px;
+    line-height: 1.2px;
+    color: #686868;
+    display: block;
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    padding: 0 30px 0 60px;
+    background: #ececec;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: border .2s;
+    user-select: none;
+}
+.icon-wrapper{
+    font-size: 18px;
+    color: #999999;
+    align-items: center;
+    position: absolute;
+    display: flex;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 4px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+    pointer-events: none;
+    transition: all .3s;
+}
+#fullName{
+    padding-left: 30px;
+}
+.input:focus + .icon-wrapper{
+    color: var(--main-color);
+    padding-left: 20px;
+}
+.input:focus + #fullName{
+    padding-left: 25px;
+}
+.input:focus{
+    border: 2px solid var(--main-color);
+    outline: none;
+}
+input::-webkit-input-placeholder{
+    font-weight: 700;
+}
+input:focus::-webkit-input-placeholder{
+    color: transparent;
+}
+.checkbox-container{
+    font-family: 'Quicksand';
+    font-size: 16px;
+    font-weight: 700;
+    color: #999999;
+    display: block;
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
+    padding-left: 35px;
+    margin-left: 10px;
+}
+.checkbox-container input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 6px;
+    transition: all .2s;
+}
+.checkbox-container:hover input ~ .checkmark{
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    filter: opacity(0.7);
+}
+.checkbox-container input:checked ~ .checkmark{
+    background-color: var(--main-color);
+}
+.checkmark:after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+.checkbox-container input:checked ~ .checkmark:after{
+    display: block;
+}
+.checkbox-container .checkmark:after{
+    top: 3px;
+    left: 8px;
+    width: 6px;
+    height: 12px;
+    border: solid #686868;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+.main-btn{
+    margin: 20px auto 30px auto;
+    width: 100%;
+}
+.main-btn span{
+    font-size: 18px;
+    font-weight: 700;
+}
+.login p{
+    color: #999999;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 35px;
+}
+.col-icon{
+    flex-basis: 50%;
+    display: flex;
+    border-radius: 8px;
+    padding: 0 5px;
+    width: 150px;
+    height: 80px;
+}
+.orlogin{
+    display: flex;
+    width: 150px;
+    height: 40px;
+    border: 2px solid #999999;
+    border-radius: 6px;
+    margin-bottom: 50px;
+    transition: all .2s;
+    cursor: pointer;
+}
+.orlogin:hover, .orlogin:hover h3{
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+.orlogin:hover:active{
+    transform: scale(0.95);
+    box-shadow: 0 5px 15px rgb(158, 157, 157, 0.7);
+}
+.col-icon img{
+    margin: 6px;
+    width: 25px;
+}
+.col-icon h3{
+    transition: all .2s;
+    color: #999999;
+    font-size: 17px;
+    padding-top: 7px;
+    padding-left: 6px;
+}
+.bottom-links{
+    text-align: center;
+    margin: 10px 0;
+}
+.bottom-links a{
+    color: #999999;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all .2s;
+}
+.bottom-links a:hover{ color: var(--main-color); }
+
+.login-wrapper section{
+    padding-bottom: 15px;
+}
+.login-wrapper h2, .login-wrapper h4{
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 10px;
+}
+.login-wrapper h2{
+    color: var(--main-color);
+}
+.login-wrapper h4{
+    color: rgb(168, 54, 54);
+    font-size: 24px;
+}
+
+
+/* Admin modal */
+
+
+#adminModal .admin-icon a{
+    background: var(--secondary-color);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 200;
+}
+#adminModal .admin-icon i{
+    font-size: 20px;
+    color: white;
+    text-shadow: 0 0 4px var(--secondary-color);
+}
+#adminModal .cal-a{
+    padding: 32px !important;
+}
+#adminModal .cal{
+    font-size: 25px;
+}
+#modalContent{
+    height: 350px;
+}
+.modal .title-hr{
+    position: absolute;
+    top: 68px;
+    left: 225px;
+}
+.not .input{
+    padding: 0 30px 0 15px;
+    margin-bottom: 20px;
+}
+.admin-row{
+    margin-bottom: 30px;
+}

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block head %} 
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/products.css')}}"> 
+    <title>Szolgáltatásaink - ComputerDesk</title>
+{% endblock %}
+
+{% block content %}
+
+    {% if message == "sikeres-kosarhoz-adas" %}
+        {% set short_msg = "SIKERES KOSÁRHOZ ADÁS!" %}
+        {% set long_msg = "Sikeresen hozzáadtuk kosarához! Már meg is tudja venni!" %}
+    
+    {% elif message == "sikertelen-kosarhoz-adas" %}
+        {% set short_msg = "SIKERTELEN KOSÁRHOZ ADÁS!" %}
+        {% set long_msg = "Hiba történt kosárhoz adás közben!" %}
+
+    {% endif %}
+
+    <script>
+        $(document).ready(function(){
+            const msg = "{{message}}";
+
+            if (msg == "sikeres-kosarhoz-adas"){
+                $("#successMessage").modal("show");
+                $("#product").removeAttr("data-aos");
+            }
+            else if (msg == "sikertelen-kosarhoz-adas"){
+                $("#errorMessage").modal("show");
+                $("#product").removeAttr("data-aos");
+            }
+        })
+    </script>
+    
+
+    <!-- Error message modal -->
+
+
+    <div class="modal fade" id="errorMessage" tabindex="-1" aria-labelledby="errorMessage" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center" id="errorHeader">
+                    <div class="icon-box">
+                        <i class="far fa-times-circle"></i>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>{{ short_msg }}</h4>
+                    <p>{{ long_msg }}</p>
+                    <button type="button" class="main-btn" data-bs-dismiss="modal" aria-label="Bezárás">Bezárás</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Success message modal -->
+
+    <div class="modal fade" id="successMessage" tabindex="-1" aria-labelledby="successMessage" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center" id="successHeader">
+                    <div class="icon-box">
+                        <i class="far fa-check-circle"></i>                    
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>{{ short_msg }}</h4>
+                    <p>{{ long_msg }}</p>
+                    <button type="button" class="main-btn" data-bs-dismiss="modal" aria-label="Bezárás">Bezárás</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Card -->    
+
+    <div class="card bg-dark text-white" id="mainCard">
+        <div class="card-img-overlay">
+            <h1 class="card-title">Szolgáltatásaink</h1>
+        </div>
+    </div>
+
+    <!-- Products -->
+
+    <section class="product">
+        <div id="product" data-aos="zoom-in" data-aos-duration="850" class="products-wrapper row g-4">
+
+            {% for products in products %}
+
+                <div class="col-xxl-3 col-xl-4 col-lg-6">
+                    <div class="card justify-content-center text-center">
+                        <div class="product-icon-wrapper">
+                            <i class="{{ products.icon }} product-icon"></i>
+                        </div>
+                        <div class="card-body product-body-wrapper">
+                            <form method="POST" action="add_inc">
+                                <h2 class="card-title" id="proba">{{ products.name }}</h2>
+                                <div class="d-flex justify-content-center text-center">
+                                    <h4 class="card-price"><i>{{ products.price }} Ft</i></h4>
+                                    <select name="quantity" class="quantity-selector">
+                                        <option selected value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" name="code" value="{{ products.code }}">
+                                <button type="submit" class="main-btn"><span>Kosárhoz adás</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </section>
+
+{% endblock %}

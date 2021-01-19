@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="{{url_for('static', filename='pics/mini_logo.png')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='node_modules/aos/dist/aos.css')}}">
+        <script src="{{url_for('static', filename='node_modules/aos/dist/aos.js')}}"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/base.css')}}">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        {% block head %}{% endblock %}
+        <script>
+            $(document).ready(function(){
+                const site = "{{site}}";
+
+                if (site != ""){
+
+                    if (site == "acc"){
+                        $("#acc").addClass("active");
+                    }
+                    else if (site == "index"){
+                        $("#index").addClass("active");
+                    }
+                    else if (site == "products"){
+                        $("#products").addClass("active");
+                    }
+                    else if (site == "us"){
+                        $("#us").addClass("active");
+                    }
+                    else if (site == "support"){
+                        $("#support").addClass("active");
+                    }
+                    else if (site == "cart"){
+                        $("#cart").addClass("active");
+                    }
+
+                }
+            });
+        </script>
+    </head>
+    <body>
+
+        {% set message = request.args.get("message") %}
+        
+
+        <nav class="navbar navbar-expand-xxl navbar-light bg-light border-bottom border-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand " href="/">
+                    <img src="{{url_for('static', filename='pics/logo.png')}}" alt="Logo" class="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/" id="index">
+                            <i class="fas fa-home"></i> Kezdőlap
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/szolgaltatasok" id="products">
+                            <i class="fas fa-project-diagram"></i> Szolgáltatásaink
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/rolunk" id="us">
+                            <i class="fas fa-users"></i> Rólunk
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/elerhetosegek" id="support">
+                            <i class="fas fa-phone"></i> Elérhetőségek
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ca-us" href="/kosar" id="cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+
+                        {% if session["logged_in"] %}
+                        <li class="nav-item user">
+                            <a class="nav-link ca-us" href="/fiok" id="acc">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if not session["logged_in"] %}
+                        <li class="nav-item user">
+                            <a class="nav-link ca-us" href="/bejelentkezes" id="acc"> 
+                                <i class="far fa-user"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+            
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        {% if message == "rossz-adatok" %}
+        {% endif %}
+
+        {% block content %}  {% block logform %}{% endblock %}   {% block regform %}{% endblock %}  {% endblock %}
+        {% include "footer.html" %}
+        <script>AOS.init()</script>
+        <script src="{{url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    </body>
+</html>

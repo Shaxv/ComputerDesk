@@ -1,0 +1,569 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>
+        {% if x == 3 %}
+            Fiók
+        {% elif x == 1 %}
+            Bejelentkezés
+        {% elif x == 2 %}
+            Regisztráció
+        {% endif %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/account.css')}}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- Setting message variables -->
+
+    {% if message == "sikeres-regisztracio" %}
+        {% set short_msg = "SIKERES REGISZTRACIÓ!" %}
+        {% set long_msg = "Sikeres regisztráció! Már be is tud jelentkezni!" %}
+
+    {% elif message == "sikeres-bejelentkezes" %}
+        {% set short_msg = "SIKERES BEJELENTKEZÉS!" %}
+        {% set long_msg = "Sikeres bejelentkezés! Átirányítottuk a fiók oldalra!" %}
+
+    {% elif message == "sikeres-kijelentkezes" %}
+        {% set short_msg = "SIKERES KIJELENTKEZÉS!" %}
+        {% set long_msg = "Sikeres kijelentkezés! Átirányítottuk a bejelentkezés oldalra!" %}
+
+    {% elif message == "sikeres-jelszo-valtoztatas" %}
+        {% set short_msg = "SIKERES JELSZÓ VÁLTOZTATÁS!" %}
+        {% set long_msg = "Sikeres jelszó változtatás! Jelszava megváltozott!" %}
+
+    {% endif %}
+
+
+    {% if message == "pwd-hossz" %}
+        {% set short_msg = "JELSZÓNAK LEGALÁBB 6 KARAKTER!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült regisztrálni!" %}
+
+    {% elif message == "pwd-nem-egyeznek" %}
+        {% set short_msg = "JELSZAVAK NEM EGYEZNEK!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült regisztrálni!" %}
+
+    {% elif message == "nem-teljes-név" %}
+        {% set short_msg = "TELJES NEVET ADJON MEG!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült regisztrálni!" %}
+
+    {% elif message == "ismeretlen-hiba" %}
+        {% set short_msg = "ISMERETLEN HIBA!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült regisztrálni!" %}
+
+
+
+    {% elif message == "rossz-adatok" %}
+        {% set short_msg = "ROSSZ ADATOK!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült bejelentkezni!" %}
+
+
+    {% elif message == "pwdk-nem-egyeznek" %}
+        {% set short_msg = "JELSZAVAK NEM EGYEZNEK" %}
+        {% set long_msg = "Hiba történt! Nem sikerült megváltoztatni a jelszót!" %}
+    
+    {% elif message == "hibas-pwd" %}
+        {% set short_msg = "HIBÁS JELSZÓ!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült megváltoztatni a jelszót!" %}
+    
+    {% elif message == "pwd-nem-6" %}
+        {% set short_msg = "JELSZÓNAK LEGALÁBB 6 KARAKTER KELL!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült megváltoztatni a jelszót!" %}
+
+    {% elif message == "pwd-egyezik" %}
+        {% set short_msg = "ÚJ JELSZÓ NEM EGYEZHET MOSTANIVAL!" %}
+        {% set long_msg = "Hiba történt! Nem sikerült megváltoztatni a jelszót!" %}
+
+    {% elif message == "sikeres-termek-letrehozas" %}
+        {% set short_msg = "SIKERES TERMÉK LÉTREHOZÁS!" %}
+        {% set long_msg = "Új szolgáltatást sikeresen létrehoztuk!" %}
+
+    {% elif message == "sikertelen-termek-letrehozas" %}
+        {% set short_msg = "SIKERTELEN TERMÉK LÉTREHOZÁS!" %}
+        {% set long_msg = "Új szolgáltatást létrehozás közben hiba történt!" %}
+
+    {% elif message == "letezo-termek" %}
+        {% set short_msg = "SIKERTELEN TERMÉK LÉTREHOZÁS!" %}
+        {% set long_msg = "Ilyen termék már létezik az adatbázisba!" %}
+
+    {% elif message == "sikeres-termek-torles" %}
+        {% set short_msg = "SIKERES TERMÉK TÖRLÉS!" %}
+        {% set long_msg = "Szolgáltatást sikeresen kitörölte!" %}
+
+    {% elif message == "sikertelen-termek-torles" %}
+        {% set short_msg = "SIKERTELEN TERMÉK TÖRLÉS!" %}
+        {% set long_msg = "Hiba lépett fel a termék törlése közben!" %}
+
+    {% elif message == "sikeres-termek-frissites" %}
+        {% set short_msg = "SIKERESEN TERMÉK FRISSÍTÉS" %}
+        {% set long_msg = "Sikeresen frissítette a terméket!" %}
+
+    {% endif %}
+
+
+    <script>
+        $(document).ready(function(){
+            const msg = "{{message}}";
+
+            if ( msg != "" ){
+
+                if ( msg == "pwd-hossz" || msg == "uid-hossz" || msg == "ismeretlen-hiba" || msg == "pwd-nem-egyeznek" || msg == "nem-teljes-név" ){
+                    $("#signup").removeAttr("data-aos");
+                    $("#errorMessage").modal("show");
+                }
+                else if ( msg == "rossz-adatok" ){
+                    $("#login").removeAttr("data-aos")
+                    $("#errorMessage").modal("show");
+                }
+                else if ( msg == "sikeres-regisztracio" || msg == "sikeres-kijelentkezes" ){
+                    $("#login").removeAttr("data-aos")
+                    $("#successMessage").modal("show");
+                }
+                else if ( msg == "sikeres-bejelentkezes" || msg == "sikeres-jelszo-valtoztatas" || msg == "sikeres-termek-letrehozas" || msg == "sikeres-termek-torles" || msg == "sikeres-termek-frissites" ){
+                    $("#account").removeAttr("data-aos")
+                    $("#successMessage").modal("show");
+                }
+                else if ( msg == "pwdk-nem-egyeznek" || msg == "hibas-pwd" || msg == "pwd-nem-6" || msg == "pwd-egyezik" || msg == "sikertelen-termek-letrehozas" || msg == "letezo-termek" || msg == "sikertelen-termek-torles"){
+                    $("#account").removeAttr("data-aos")
+                    $("#errorMessage").modal("show")
+                }
+
+            }
+        });
+    </script>
+
+    {% if session["admin"] == True %}
+
+
+    <!-- Admin modal -->
+
+
+        <div class="modal fade not" id="adminModal" tabindex="-1" aria-labelledby="adminModal" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" id="modalContent">
+                    <div class="modal-header justify-content-center text-center">
+                        <h1 class="title">Admin panel</h1>
+                        <hr class="title-hr">
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="row py-4 px-4 g-4 admin-row"> 
+                            <div class="col">
+                                <div class="admin-icon">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#productsModal" style="all:unset;">
+                                        <a href="#"><i class="fas fa-project-diagram"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="admin-icon">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#usersModal" style="all:unset;">
+                                        <a href="#"><i class="fas fa-users"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="admin-icon">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#newProductsModal" style="all:unset;">
+                                        <a href="#" class="cal-a"><i class="far fa-calendar-plus cal"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row py-4 px-4 g-4 admin-row">
+                            <div class="col">
+                                <div class="admin-icon">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#deleteProductsModal" style="all:unset;">
+                                        <a href="#" class="cal-a"><i class="far fa-calendar-minus cal"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Products modal -->
+
+
+        <div class="modal fade not" id="productsModal" tabindex="-1" aria-labelledby="productsModal" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center text-center">
+                        <h1 class="title">Szolgáltatások</h1>
+                        <hr class="title-hr">
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="row py-4 px-4 g-4">
+                            <h1>{{last}}</h1>
+                            {% for products in products %}
+                                <div class="admins-wrapper">
+                                    <form action="{{url_for('.update_product_inc')}}">
+                                        <div class="d-flex">
+                                            <h2>{{ products.name }}</h2>
+                                            <input type="text" name="name" class="input" required> 
+                                        </div>
+                                        <div class="d-flex">
+                                            <h4>{{ products.icon }}</h4>
+                                            <input type="text" name="icon" class="input" required> 
+                                        </div>
+                                        <div class="d-flex">
+                                            <p>{{ products.price }}</p>
+                                            <input type="text" name="price" class="input" required> 
+                                        </div>
+                                        <input type="hidden" value="{{ products.id }}" name="id">
+                                        <button type="submit" class="main-btn">
+                                            <span>Termék frissítése</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Delete products modal -->
+
+
+        <div class="modal fade not" id="deleteProductsModal" tabindex="-1" aria-labelledby="deleteProductsModal" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center text-center">
+                        <h1 class="title">Szolgáltatás törlése</h1>
+                        <hr class="title-hr">
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="row py-4 px-4 g-4">
+                            {% for products in products %}
+                                <div class="admins-wrapper">
+                                    <form action="{{url_for('.delete_product_inc')}}">
+                                        <div class="d-flex">
+                                            <h2>{{ products.name }}</h2>
+                                            <input type="hidden" name="name" value="{{products.name}}">
+                                        </div>
+                                        <div class="d-flex">
+                                            <h4>{{ products.price }}</h4>
+                                        </div>
+                                        <div class="d-flex">
+                                            <p>{{ products.icon }}</p>
+                                        </div>
+                                        <button type="submit" class="main-btn danger">
+                                            <span>Termék törlése</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- New products modal -->
+
+
+        <div class="modal fade not" id="newProductsModal" tabindex="-1" aria-labelledby="newProductsModal" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center text-center">
+                        <h1 class="title">Szolgáltatás létrehozása</h1>
+                        <hr class="title-hr">
+                    </div>
+                    <div class="modal-body text-center">
+                        <form method="GET" action="/add_product_inc">
+                            <input type="hidden" name="code" value="{{ current }}">
+                            <input type="text" name="name" class="input" placeholder="Pl.: Karbantartás" required>
+                            <input type="text" name="icon" class="input" placeholder="Pl.: fas fa-wrench" required>
+                            <input type="number" name="price" class="input" placeholder="Pl.: 20000" required>
+                            <button type="submit" class="main-btn">
+                                <span>Termék hozzáadása</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Users modal -->
+
+
+        <div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModal" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center text-center">
+                        <h1 class="title">Felhasználók</h1>
+                        <hr class="title-hr">
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="row py-4 px-4 g-4">
+                            {% for users in users %}
+                                <div class="admins-wrapper">
+                                    <h2>{{ users.usersUid }}</h2>
+                                    <h2>{{ users.usersName }}</h2>
+                                    <h4>{{ users.usersId }}</h4>
+                                </div>
+                                <h4>{{ users.admin }}</h4>
+                                <p>{{ users.usersEmail }}</p>
+                                <p>{{ users.regDate }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    <!-- Error message modal -->
+
+
+    <div class="modal fade" id="errorMessage" tabindex="-1" aria-labelledby="errorMessage" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center" id="errorHeader">
+                    <div class="icon-box">
+                        <i class="far fa-times-circle"></i>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>{{ short_msg }}</h4>
+                    <p>{{ long_msg }}</p>
+                    <button type="button" class="main-btn" data-bs-dismiss="modal" aria-label="Bezárás">Bezárás</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Success message modal -->
+
+    <div class="modal fade" id="successMessage" tabindex="-1" aria-labelledby="successMessage" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center" id="successHeader">
+                    <div class="icon-box">
+                        <i class="far fa-check-circle"></i>                    
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>{{ short_msg }}</h4>
+                    <p>{{ long_msg }}</p>
+                    <button type="button" class="main-btn" data-bs-dismiss="modal" aria-label="Bezárás">Bezárás</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password change modal -->
+
+    
+    <div class="modal fade" id="pwdChange" tabindex="-1" aria-labelledby="forgotPwd" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header justify-content-center text-center">
+                    <h1 class="title">Jelszó változtatás</h1>
+                    <hr class="title-hr">
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="/pwdchange_inc">
+                        <div class="input-container">
+                            <input type="text" name="oldPwd" class="input" placeholder="Régi jelszó" required>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" name="newPwd" class="input" placeholder="Új jelszó" required>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-key icon"></i>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" name="newPwdRepeat" class="input" placeholder="Új jelszó még egyszer" required>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-key icon"></i>
+                            </div>
+                        </div>
+                        <button type="submit" class="main-btn"><span>Jelszó mentése</span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if session["logged_in"] != True %}
+
+        {% if x == 1 %}
+            {% block logform %}
+                <section class="login">
+                    <div class="login-bg">
+                        <div class="login-wrapper" data-aos="zoom-in" data-aos-duration="850" id="login">
+                            <div class="form-wrapper">
+                                <span class="title">Bejelentkezés</span>
+                                <hr class="title-hr">
+                                <form method="POST" action="/login_inc">
+                                    <div class="input-container">
+                                        <input type="text" name="uid" class="input" placeholder="Felhasználónév / Ímél cím" required>
+                                        <div class="icon-wrapper">
+                                            <i class="fas fa-user icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="input-container">
+                                        <input type="password" name="pwd" class="input" placeholder="Jelszó" required>
+                                        <div class="icon-wrapper">
+                                            <i class="fas fa-key icon"></i>
+                                        </div>
+                                    </div>
+                                    <label class="checkbox-container">Emlékezz rám
+                                        <input type="checkbox" name="rmbme">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <button type="submit" name="submit" class="main-btn"><span>Bejelentkezés</span></button>
+                                </form>
+                                <p><i>Vagy jelentkezzen be</i></p>
+                                <div class="row">
+                                    <div class="col-icon">
+                                        <div class="orlogin">
+                                            <img src="{{url_for('static', filename='pics/facebook.png')}}">
+                                            <h3>Facebook</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-icon">
+                                        <div class="orlogin">
+                                            <img src="{{url_for('static', filename='pics/google.png')}}">
+                                            <h3>Google</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-links">
+                                    <a href="/regisztracio" style="font-size: 18px;"><u><i>Nincsen még fiókja?</i></u></a>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endblock %}
+        {% endif %}
+    
+    {% if x == 2 %}
+        {% block regform %}    
+            <section class="login"> 
+                <div class="login-bg" style="padding: 100px 0;">
+                    <div class="login-wrapper" data-aos="zoom-in" data-aos-duration="850" id="signup">
+                        <div class="form-wrapper">
+                            <span class="title">Regisztráció</span>
+                            <hr class="title-hr">
+                            <form action="/register_inc" method="POST">
+                                <div class="input-container">
+                                    <input type="email" name="email" class="input" placeholder="Ímél cím" required>
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-envelope"></i>                            
+                                    </div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" name="uid" class="input" placeholder="Felhasználónév" required>
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-user icon"></i>
+                                    </div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" name="name" class="input" placeholder="Teljes név" required>
+                                    <div class="icon-wrapper" id="fullName"  style="font-size: 22px;">
+                                        <i class="fas fa-male icon"></i>
+                                    </div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="password" name="pwd" class="input" placeholder="Jelszó" required>
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-key icon"></i>
+                                    </div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="password" name="pwdrepeat" class="input" placeholder="Jelszó ismétlés" required>
+                                    <div class="icon-wrapper">
+                                        <i class="fas fa-key icon"></i>
+                                    </div>
+                                </div>
+                                <button type="submit" name="submit" class="main-btn"><span>Regisztráció</span></button>
+                            </form>
+                            <p><i>Vagy regisztráljon</i></p>
+                            <div class="row">
+                                <div class="col-icon">
+                                    <div class="orlogin">
+                                        <img src="{{url_for('static', filename='pics/facebook.png')}}">
+                                        <h3>Facebook</h3>
+                                    </div>
+                                </div>
+                                <div class="col-icon">
+                                    <div class="orlogin">
+                                        <img src="{{url_for('static', filename='pics/google.png')}}">
+                                        <h3>Google</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom-links">
+                                <a href="/bejelentkezes" style="font-size: 18px;"><u><i>Van már fiókja?</i></u></a>                        
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </section>
+        {% endblock %}
+    {% endif %}
+
+    {% else %}
+        <section class="login"> 
+            <div class="bg1">
+                <div class="login-wrapper" data-aos="zoom-in" data-aos-duration="850" id="account">
+                    <div class="form-wrapper">
+                        <span class="title">Fiók</span>
+                        <hr class="title-hr">
+                        <form action="/logout">
+                            <div class="input-container">
+                                <input type="text" class="input" value="{{ session['userUid'] }}" disabled>
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-user icon"></i>
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <input type="email" class="input" value="{{ session['userEmail'] }}" disabled>
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-envelope icon"></i>
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <input type="password" id="pwd" class="input" value="********" disabled>
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-key icon"></i>
+                                </div>
+                            </div>
+                            <button class="main-btn" type="submit"><span>Kijelentkezés</span></button>
+                        </form>
+                        <div class="bottom-links">
+                            {% if session["admin"] == True %}
+
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#adminModal" style="all:unset;">
+                                    <a href="#" style="font-size: 20px;"><u><i>Admin panel</i></u></a>
+                                </button>
+                                <br>
+
+                            {% endif %}
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#pwdChange" style="all:unset;">
+                                <a href="#" style="font-size: 18px;"><u><i>Jelszó változtatás</i></u></a>
+                            </button>                            
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+    {% endif %}
+
+{% endblock %}

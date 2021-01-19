@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block head %} 
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/cart.css')}}"> 
+    <title>Kosár - ComputerDesk</title>
+{% endblock %}
+
+{% block content %}
+
+    {% if message == "sikeres-urites" %}
+        {% set short_msg = "SIKERES KOSÁR ÜRÍTÉS" %}
+        {% set long_msg = "Kosarát ürítettük!" %}
+
+    {% elif message == "sikeres-torles" %}
+        {% set short_msg = "SIKERESEN KITÖRÖLTE A TERMÉKET!" %}
+        {% set long_msg = "Sikeresen kitöröltük a kosarából a jelölt terméket!" %}
+
+    {% endif %}
+
+    <script>
+        $(document).ready(function(){
+            const msg = "{{message}}"
+
+            if (msg == "sikeres-torles"){
+                $("#carts").removeAttr("data-aos");
+                $("#successMessage").modal("show");
+            }
+            else if (msg == "sikeres-urites"){
+                $("#emptyCart").removeAttr("data-aos");
+                $("#successMessage").modal("show");
+            }
+
+        })
+    </script>
+
+
+        <!-- Error message modal -->
+
+
+        <div class="modal fade" id="errorMessage" tabindex="-1" aria-labelledby="errorMessage" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center" id="errorHeader">
+                        <div class="icon-box">
+                            <i class="far fa-times-circle"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>{{ short_msg }}</h4>
+                        <p>{{ long_msg }}</p>
+                        <button type="button" class="main-btn" data-bs-dismiss="modal" aria-label="Bezárás">Bezárás</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+        <!-- Success message modal -->
+    
+        <div class="modal fade" id="successMessage" tabindex="-1" aria-labelledby="successMessage" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center" id="successHeader">
+                        <div class="icon-box">
+                            <i class="far fa-check-circle"></i>                    
+                        </div>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>{{ short_msg }}</h4>
+                        <p>{{ long_msg }}</p>
+                        <button type="button" class="main-btn" data-bs-dismiss="modal" aria-label="Bezárás">Bezárás</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% if "cartItems" in session %}
+
+        <section class="cart">
+            <div id="carts" data-aos="zoom-in" data-aos-duration="850" class="cart-wrapper row py-4 px-4 g-4 justify-content-center">
+                {% for key, value in session["cartItems"].items() %}
+                    {% set quantity = session["cartItems"][key]["quantity"] %}
+                    {% set name = session["cartItems"][key]["name"] %}
+                    {% set price = session["cartItems"][key]["price"] %}
+                    {% set item_price = session["cartItems"][key]["total_price"] %}
+                    {% set icon = session["cartItems"][key]["icon"] %} 
+                    {% set code = session["cartItems"][key]["code"] %}  
+
+                    <div class="col-lg-3 col-md-6 mb-6">
+                        <div class="card">
+                            <div class="cart-icon-wrapper">
+                                <i class="{{ icon }} cart-icon"></i>
+                            </div>
+                            <div class="card-body cart-body-wrapper">
+                                <h2>{{ name }}</h2>
+                                <h4 style="font-weight: 600;"><i>{{ price }} Ft</i></h4>
+                                <h4><i>{{ quantity }} darab</i></h4>
+                                <hr style="background: white; height: 3px; border:none; margin: 20px auto; width: 65%;">
+                                <h2>{{ item_price }} Ft</h2>
+                                <div class="cart-buttons justify-content-center">
+                                    <a href="{{ url_for('.delete_product_cart_inc', code=code) }}" class="main-btn danger">
+                                        <span><i class="fas fa-trash-alt"></i> Törlés</span>
+                                    </a>
+                                    <a href="#" class="main-btn">
+                                        <span><i class="fas fa-shopping-bag"></i> Fizetés</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+            <div class="container bottom-buttons justify-content-center">
+                <a href="{{ url_for('.empty_cart_inc') }}" class="main-btn danger">
+                    <span><i class="fas fa-dumpster"></i> Kosár törlése</span>
+                </a>
+                <a href="{{ url_for('.szolgaltatasok') }}" class="main-btn">
+                    <span><i class="fas fa-shopping-basket"></i> Tovább a fizetéshez</span>
+                </a>
+            </div>
+        </section>
+    
+    {% else %}
+
+        <div class="container">
+            <div class="card error text-white" data-aos="zoom-in" data-aos-duration="850" id="emptyCart">
+                <div class="cart-icon-wrapper">
+                    <i class="far fa-times-circle cart-icon"></i>
+                </div>
+                <div class="card-body cart-body-wrapper">
+                    <h1>Üres a kosara!</h1>
+                    <a href="szolgaltatasok" class="main-btn">
+                        <span><i class="fas fa-shopping-bag"></i> Szolgáltatások</span>
+                    </a>
+                </div>
+            </div>       
+        </div>
+
+    {% endif %}
+
+{% endblock %}

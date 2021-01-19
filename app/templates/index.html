@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+{% block head %} 
+    <title>Kezdőlap - ComputerDesk</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}">
+{% endblock %}
+{% block content %}
+
+
+    <!-- Main Card -->    
+
+    <section id="indexWelcome">
+        <div class="card bg-dark text-white" id="mainCard">
+            <div class="card-img-overlay">
+                <h1 class="card-title">Számítógép szaküzlet és szervíz</h1>
+                <div class="card-text-wrapper">
+                    <p class="card-text"><b>10.000</b> ELÉGEDETT ÜGYFÉL</p>
+                    <p class="card-text"><b>SEGÍTŐKÉSZ</b> ÜGYFÉLSZOLGÁLAT</p>
+                    <p class="card-text"><b>1</b> ÉV GARANCIA</p>
+                    <p class="card-text"><b>6</b> MUNKATÁRS</p>
+                    <p class="card-text"><b>3 ÜZLET</b> PEST MEGYÉBEN</p>
+                    <a href="/szolgaltatasok" class="main-btn transparent">SZOLGÁLTATÁSAINK <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Product Examples -->
+
+
+    <section id="productExamples">
+        <h1 class="title">Pár szolgáltatásunk</h1>
+        <hr class="title-hr">
+    
+        <div class="card mb-3 pr-main-wrapper odd" data-aos="fade-right" data-aos-duration="800">
+            <div class="row">
+                <div class="col-md-3 pr-icon-wrapper ">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <div class="col-md-9 pr-text-wrapper">
+                    <div class="card-body">
+                        <h1 class="card-title">Karbantartás</h1>
+                        <p class="sub-title"><i>Lelassult, zajos vagy nagyon melegszik számítógépe?</i></p>
+                        <hr class="title-hr">
+                        <div class="pr-icons-wrapper">
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Teljes körű szoftveres</p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Új erőre kap gépe</p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Garanciális</p>
+                            </div>
+                        </div>
+                        <a href="#" class="main-btn transparent">További részlet <i class="far fa-hand-pointer"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-3 pr-main-wrapper even" data-aos="fade-left" data-aos-duration="800">
+            <div class="row">
+                <div class="col-md-9 pr-text-wrapper">
+                    <div class="card-body">
+                        <h1 class="card-title">Távoli segítségnyújtás</h1>
+                        <p class="sub-title"><i>Kéne segítség vagy egy gyors útba igazítás szakemberektől?</i></p>
+                        <hr class="title-hr">
+                        <div class="pr-icons-wrapper">
+                            <div class="pr-icons-col">
+                                <p class="card-text">Segítőkész ügyfélszolgálat <i class="fas fa-check-square"></i></p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text">Gyors segítség <i class="fas fa-check-square"></i></p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text">Bármiben <i class="fas fa-check-square"></i></p>
+                            </div>
+                        </div>
+                        <a href="#" class="main-btn transparent">További részlet <i class="far fa-hand-pointer"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-icon-wrapper">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-3 pr-main-wrapper odd" data-aos="fade-right" data-aos-duration="800">
+            <div class="row">
+                <div class="col-md-3 pr-icon-wrapper">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="col-md-9 pr-text-wrapper">
+                    <div class="card-body">
+                        <h1 class="card-title">Bővítés, fejlesztés</h1>
+                        <p class="sub-title"><i>Legkíválóbb teljesítményét szeretné kihozni a számítógépéból?</i></p>
+                        <hr class="title-hr">
+                        <div class="pr-icons-wrapper">
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Bővíthetőség felmérése</p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Windows optimalizálása</p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Akár készülékcsere</p>
+                            </div>
+                        </div>
+                        <a href="#" class="main-btn transparent">További részlet <i class="far fa-hand-pointer"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-3 pr-main-wrapper even" data-aos="fade-left" data-aos-duration="800">
+            <div class="row">
+                <div class="col-md-9 pr-text-wrapper">
+                    <div class="card-body">
+                        <h1 class="card-title">Számítógép, laptop vásárlás</h1>
+                        <p class="sub-title"><i>Megunta régi, poros akár hangos számítógépét vagy laptopját?</i></p>
+                        <hr class="title-hr">
+                        <div class="pr-icons-wrapper">
+                            <div class="pr-icons-col">
+                                <p class="card-text">Tesztelt <i class="fas fa-check-square"></i></p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text">Használatra készen <i class="fas fa-check-square"></i></p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text">Legújabb hardverekkel <i class="fas fa-check-square"></i></p>
+                            </div>
+                        </div>
+                        <a href="#" class="main-btn transparent">További részlet <i class="far fa-hand-pointer"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-icon-wrapper">
+                    <i class="fas fa-desktop"></i>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card mb-3 pr-main-wrapper odd" data-aos="fade-right" data-aos-duration="800">
+            <div class="row">
+                <div class="col-md-3 pr-icon-wrapper">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="col-md-9 pr-text-wrapper">
+                    <div class="card-body">
+                        <h1 class="card-title">Kijelző fóliázás</h1>
+                        <p class="sub-title"><i>Rossz minőségűek a kijelzői fóliái?</i></p>
+                        <hr class="title-hr">
+                        <div class="pr-icons-wrapper">
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Üveg vagy sima</p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Felrakással az árban</p>
+                            </div>
+                            <div class="pr-icons-col">
+                                <p class="card-text"><i class="fas fa-check-square"></i> Csúcs minőség</p>
+                            </div>
+                        </div>
+                        <a href="#" class="main-btn transparent">További részlet <i class="far fa-hand-pointer"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Employees -->
+
+    
+    <section id="employees">
+        <div class="empbg">
+            <h1 class="title">Munkatársaink</h1>
+            <hr class="title-hr">
+            <div class="container">
+                <div class="row">
+                    <div class="col" data-aos="flip-down" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                    <div class="col" data-aos="flip-up" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                    <div class="col" data-aos="flip-down" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                    <div class="col" data-aos="flip-up" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" data-aos="flip-down" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                    <div class="col" data-aos="flip-up" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                    <div class="col" data-aos="flip-down" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                    <div class="col" data-aos="flip-up" data-aos-duration="800">
+                        <img src="{{url_for('static', filename='pics/example.png')}}" alt="Munkatárs">
+                        <h1>Lakatos Ábel</h1>
+                        <p>- Számítógép szakértő -</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="message">
+        <h1 class="title">Lépjen kapcsolatba velünk</h1>
+        <hr class="title-hr">
+        <form action="newsletter_inc" method="POST">
+            <div class="container" data-aos="fade" data-aos-duration="1000">
+                <div class="row">
+                    <div class="col">
+                        <label for="fname" class="required">Vezetéknév </label>
+                        <input type="text" class="input" name="fname" required>
+                    </div>
+                    <div class="col">
+                        <label for="lname" class="required">Keresztnév </label>
+                        <input type="text" class="input" name="lname" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="email" class="required">Ímél cím </label>
+                        <input type="email" class="input" name="email" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="phone">Telefonszám </label>
+                        <input type="tel" class="input" name="phone">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="msg" class="required">Üzenet </label>
+                        <textarea name="msg" class="form-control" rows="8"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="main-btn">
+                            <span>Küldés</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Elérhetőségek - ComputerDesk</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/contact.css')}}">
+{% endblock %}
+{% block content %}
+
+
+    <!-- Main Card -->    
+
+    <section id="indexWelcome">
+        <div class="card bg-dark text-white" id="mainCard">
+            <div class="card-img-overlay">
+                <h1 class="card-title">Elérhetőségek</h1>
+            </div>
+        </div>
+    </section>
+
+    <!---->
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-4 col-lg-6 col-md-12">
+                    <iframe class="google-map" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJjZuKCOzbQUcRcxJuBNdi12A&key=AIzaSyBXlotVG2B5xblTGmf4VAa8JQI32dbMFpQ" allowfullscreen></iframe>    
+                    <h1>Budapest, Róbert károly krt. 33.</h1>
+                    <h4>Tel.: +36-20-658-136</h4>
+                </div>
+                <div class="col-xxl-4 col-lg-6 col-md-12">
+                    <iframe class="google-map" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJq_OaR27hQUcRTlcONfxlJWY&key=AIzaSyBXlotVG2B5xblTGmf4VAa8JQI32dbMFpQ" allowfullscreen></iframe>
+                    <h1>Érd, Tárnoki út 86.</h1>
+                    <h4>Tel.: +36-20-658-621</h4>
+                </div>
+                <div class="col-xxl-4 col-lg-12 col-md-12">
+                    <iframe class="google-map" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ92WP8wrXQUcRLtSVZcox4Kc&key=AIzaSyBXlotVG2B5xblTGmf4VAa8JQI32dbMFpQ" allowfullscreen></iframe>
+                    <h1>Budakalász, Szentendrei út 11.</h1>
+                    <h4>Tel.: +36-20-658-984</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

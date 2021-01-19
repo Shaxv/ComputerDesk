@@ -1,0 +1,330 @@
+section{
+    margin-bottom: 100px;
+}
+
+
+/* Main Card */
+
+
+#mainCard{
+    background: url("../pics/repair.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
+#mainCard .card-img-overlay{
+    background: rgba(0,0,0,0.85);
+    min-height: 500px;
+}
+#mainCard .card-title, #mainCard .card-text{
+    text-align: center;
+}
+#mainCard .card-title{
+    font-size: 70px;
+    color: var(--main-color);
+    padding-top: 50px;
+}
+#mainCard b{
+    text-shadow: 0 0 2.5px white;
+}
+#mainCard p{
+    display: inline;
+}
+#mainCard p:not(:last-of-type)::after{
+    content: " - ";
+}
+.card-text-wrapper{
+    margin: 0 auto;
+    margin-top: 35px;
+    text-align: center;
+    width: 80%;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+#mainCard .main-btn{
+    width: 250px;
+    height: 50px;
+    margin-top: 70px;
+}
+#mainCard a{
+    font-size: 17.5px;
+    font-weight: 700;
+    color: black;
+    padding-top: 10px;
+    letter-spacing: 0;
+}
+#mainCard a:hover{
+    color: white;
+}
+#mainCard .main-btn i{
+    padding-left: 10px;
+}
+
+
+/* Product Examples */
+
+
+.pr-main-wrapper{
+    max-width: 1150px; 
+    margin: auto;
+    margin-top: 100px;
+}
+.odd{
+    text-align: left;
+}
+.odd .title-hr{
+    float: left;
+}
+.odd .pr-text-wrapper{
+    border-radius: 0 8px 8px 0;
+}
+.odd .pr-icon-wrapper{
+    border-radius: 8px 0 0 8px;
+}
+.odd .main-btn{
+    float: left;
+}
+.odd .pr-icons-col i{
+    /*padding-left: 6px;*/
+}
+
+.even{
+    text-align: right;
+}
+.even .title-hr{
+    float: right;
+}
+.even .pr-icon-wrapper{
+    border-radius: 0 8px 8px 0;
+}
+.even .pr-text-wrapper{
+    border-radius: 8px 0 0 8px;
+}
+.even .main-btn{
+    float: right;
+}
+.odd .pr-icons-col i{
+    /*padding-right: 6px;*/
+}
+
+
+.pr-icon-wrapper{
+    background: var(--main-color);
+}
+.pr-text-wrapper{
+    background: var(--secondary-color);
+}
+
+.pr-icon-wrapper{
+    font-size: 80px;
+    text-shadow: 0 0 4px var(--secondary-color);
+    text-align: center;
+    color: white;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.pr-main-wrapper h1, .pr-main-wrapper p{
+    color: white;
+}
+.pr-main-wrapper .card-title{
+    font-weight: 700;
+    font-size: 32px;
+}
+.sub-title{
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+.card-body .title-hr{
+    background: white;
+    margin: 0;
+}
+.pr-icons-wrapper{
+    display: flex;
+    margin-top: 22px;
+}
+.pr-icons-col{
+    flex-basis: 33%;
+}
+
+.pr-main-wrapper .main-btn{
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    height: 42px;
+    width: 200px;
+    padding-top: 7px;
+    margin-top: 22px;
+}
+.pr-main-wrapper .main-btn:hover{
+    color: white;
+}
+
+/* Employees */
+
+
+#employees{
+    background-image: url("../pics/employee.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 1000px;
+    color: white;
+    text-align: center;
+}
+.empbg{
+    background: rgba(0,0,0,0.85);
+    min-height: 1000px;
+}
+#employees .title{
+    padding-top: 60px;
+}
+#employees .container{
+    padding: 60px;
+}
+#employees img{
+    border: 2px solid white;
+    box-shadow: 0 0 5px var(--main-color);
+    transition: all .3s;
+}
+#employees img:hover{
+    transform: translateY(-6px);
+}
+#employees .container h1{
+    font-size: 34px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-top: 4px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+#employees p{
+    padding-bottom: 26px;
+}
+
+
+/* Message */
+
+
+#message .container{
+    max-width: 800px;
+}
+#message .input{
+    border: 2px solid black;
+    padding: 0 8px;
+    color: black;
+    margin-bottom: 20px;
+}
+#message .input:focus{
+    border-color: var(--main-color);
+}
+#message label{
+    padding-bottom: 4px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.required::after{
+    content: " *";
+    color: red;
+    font-size: 26px;
+}
+#message .main-btn{
+    margin-top: 16px;
+    float: left;
+    color: black;
+}
+#message textarea{
+    border: 2px solid black;
+    background: transparent;
+    border-radius: 4px;
+    font-weight: 700;
+    resize: none;
+}
+#message textarea:focus{
+    box-shadow: none;
+    border-color: var(--main-color);
+}
+
+
+
+@media only screen and (max-width: 1400px){
+}
+
+@media only screen and (max-width: 1200px){
+    #mainCard .card-title{
+        font-size: 62px;
+    }
+    .card-text-wrapper{
+        font-size: 22px;
+        margin-top: 35px;
+    }
+
+    .pr-main-wrapper{
+        width: 80%;
+    }
+    .pr-icons-wrapper{
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 957px){
+    #mainCard, .card-img-overlay{
+        height: 600px;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .odd .pr-text-wrapper{
+        border-radius: 0 0 8px 8px !important;
+    }
+    .odd .pr-icon-wrapper{
+        border-radius: 8px 8px 0 0 !important;
+    }
+    .even .pr-text-wrapper{
+        border-radius: 8px 8px 0 0 !important;
+    }
+    .even .pr-icon-wrapper{
+        border-radius: 0 0 8px 8px;
+    }
+}
+
+@media only screen and (max-width: 570px){
+    #mainCard p:not(:last-of-type)::after{
+        content: "";
+    }
+
+    #mainCard, .card-img-overlay{
+        height: 760px;
+    }
+    #mainCard .card-title{
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+    #mainCard b{
+        display: block;
+    }
+    #mainCard p{
+        display: block;
+        margin-bottom: 14px !important;
+    }
+    .card-text-wrapper{
+        font-size: 22px;
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 401px){
+    #mainCard, #mainCard .card-img-overlay{
+        height: 800px;
+    }
+}
+
+@media only screen and (max-width: 329px){
+    #mainCard, #mainCard .card-img-overlay{
+        height: 830px;
+    }
+}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Rólunk - ComputerDesk</title>
+    <link href="{{url_for('static', filename='css/us.css')}}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+
+    <section id="usWelcome">
+        <div class="card bg-dark text-white" id="mainCard">
+            <div class="card-img-overlay">
+                <h1 class="card-title">Rólunk</h1>
+            </div>
+        </div>
+    </section>
+
+    <section id="us">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-6 col-md-12">
+                    <div class="text-box">
+                        <h2>Mivel foglalkozunk</h2>
+                        <hr class="title-hr">
+                        <p>
+                            Cégünk magánszemélyeknek és kisvállalkozásoknak segít eligazodni 
+                            az <span>informatika világában</span>.
+                            Fő tevékenységünk a számítógépek és a laptopok 
+                            <span>szoftveres</span> és egyben hardveres <span>szervízelése</span>.
+                            Ezen kívül új számítógépeket, laptopokat értékesítünk, 
+                            melyeket be is <span>üzemelünk</span>.
+                            Pesten <span>három</span> szervízünk.
+                            Igény szerint házhoz is megyünk.
+                            Szoros kapcsolatban állunk a <span>hazai piac</span> legnagyobb alkatrész beszállítóival és gyártóival, így felmerülő
+                            problémákat gyorsan, magas színvonalban és <span>jó áron</span> tudjuk teljesíteni.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-md-12">
+                    <div class="text-box">
+                        <h2>Missziónk</h2>
+                        <hr class="title-hr">
+                        <p>
+                            Hiszünk benne, hogy <span>Önnek</span> is tudunk segíteni! 
+                            Azért dolgozunk, hogy a számítógépe, laptopja, informatikai
+                            eszköze <span>hibamentesen</span>, gyorsan és egymással összhangban működjenek.
+                            Ezáltal <span>megkönnyítse</span> és
+                            <span>felgyorsítja</span> munkáját, szórakozását.
+                            Munkatársaink <span>jól képzettek</span>, és magas szintű <span>szaktudással</span> rendelkeznek. 
+                            Ők felelnek a minőségi munkáért,
+                            és az Ön <span>elégedettségéért</span>. Mindig törekszünk arra, 
+                            hogy a lehető legjobb élménnyel távozzon tőlünk,
+                            és legközelebb is minket válasszon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="text-box">
+                        <h2>Eredményeink</h2>
+                        <hr class="title-hr">
+                        <div class="row">
+                            <div class="col-xxl-3 col-md-6 col-sm-12">
+                                <div class="text-box-1">
+                                    <h3>11.650</h3>
+                                    <p>Megjavított laptop</p>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-md-6 col-sm-12">
+                                <div class="text-box-1">
+                                    <h3>5.900</h3>
+                                    <p>Megjavított számítógép</p>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-md-6 col-sm-12">
+                                <div class="text-box-1">
+                                    <h3>2.200</h3>
+                                    <p>Sikeres adatmentés</p>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-md-6 col-sm-12">
+                                <div class="text-box-1">
+                                    <h3>22.060</h3>
+                                    <p>Megoldott hiba</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

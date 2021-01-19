@@ -1,0 +1,90 @@
+.cart-wrapper{
+    margin: auto;
+    max-width: 90%;
+    margin-top: 80px;
+    text-align: center;
+}
+.cart-icon-wrapper{
+    opacity: 0.8;
+    background: var(--main-color);
+    border-radius: 10px 10px 0 0;
+}
+.cart-icon{
+    font-size: 50px;
+    margin: 40px 0;
+    color: white;
+    text-shadow: 0 0 4px rgba(43, 43, 43, .5);
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid white;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+.cart-body-wrapper{
+    background: var(--secondary-color);
+    border-radius: 0 0 10px 10px;
+}
+.cart-buttons{
+    display: inline-flex;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+}
+.card .main-btn{
+    margin: auto 5px;
+    padding-top: 4px;
+    width: 160px;
+}
+.card .main-btn i{
+    padding-right: 6px;
+}
+.card .main-btn:hover{
+    color: white;
+}
+
+.error{
+    width: 350px;
+    margin: 250px auto;
+    text-align: center;
+}
+.error .main-btn{
+    margin: 34px auto 16px auto;
+    width: 200px;
+}
+.error .cart-icon-wrapper{
+    background: var(--error-color);
+}
+
+.bottom-buttons{
+    display: flex;
+    text-align: center;
+}
+.bottom-buttons a{
+    width: 280px;
+    height: 50px;
+    margin: 0 20px;
+    padding-top: 8px;
+}
+.bottom-buttons a:hover{
+    color: white;
+}
+.bottom-buttons a i{
+    padding-right: 6px;
+}
+.bottom-buttons a span{
+    font-size: 22px;
+}
+
+.cart-body-wrapper h2, .cart-body-wrapper h4{ color: white; }
+.cart-body-wrapper h2{ font-weight: bold; font-size: 28px; }
+
+.danger{ background: var(--error-color); border: 2px solid var(--error-color);}
+.danger:hover{ background: #e85e6ca1; }
+
+@media only screen and (max-width: 1530px){
+    .cart-buttons{
+        display: block;
+    }
+    #cart .main-btn{
+        margin: 20px auto;
+    }
+}
